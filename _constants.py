@@ -1,23 +1,20 @@
 import os
 
 # ======================================================================================================================
-# === БАЗА ДАННЫХ ======================================================================================================
+# === DATABASE =========================================================================================================
 # ======================================================================================================================
-DATABASE_NAME = "all_albums"
+class DataType:
+    TEXT = "text"
+    INT = "int"
+       
+DATABASE_NAME = "PleaseChooseANameForYourDatabase"
 PATH_TO_DB = f"{os.path.join(os.getcwd(), DATABASE_NAME)}.db"
 TABLE_NAME = DATABASE_NAME
 TABLE_COLUMNS = {
-    "band": "text",
-    "album": "text"
+    "Column1": DataType.TEXT,  # Data types must come from DataType class
 }
 
 # ======================================================================================================================
-# === РАЗНОЕ ===========================================================================================================
+# === MISCELLANEOUS=====================================================================================================
 # ======================================================================================================================
-CHROME_BINARY_PATH = "GoogleChromePortable/App/Chrome-bin/chrome.exe"
-METAL_TRACKER = "https://www.metal-tracker.com"
-METAL_TRACKER_SEARCH = METAL_TRACKER + "/torrents/search.html"
 WAITING_PERIOD = 120
-WELCOME_MESSAGE = "Добро пожаловать в клиент обновлений metal-tracker.ru"
-BANDS_TXT = "bands.txt"
-RECIPIENT_EMAIL = "teverus@yandex.ru"
