@@ -29,4 +29,5 @@ def send_email(recipient_email, subject, email_body):
     session.sendmail(SENDER_EMAIL, recipient_email, message.as_string())
     session.quit()
 
+    # Sleeping so that Gmail servers wouldn't think we are spamming if we send many emails in a row
     sleep(4)
