@@ -1,14 +1,15 @@
 import sqlite3
 
-from constants import PATH_TO_DB, TABLE_NAME, TABLE_COLUMNS
+from _constants import PATH_TO_DB, TABLE_NAME, TABLE_COLUMNS
 
 
 def set_up_a_connection():
     """
     Sets up a connection to a database.
-    It uses PATH_TO_DB variable from constants
+    If the latter doesn't exist - it creates it.
+    The method uses PATH_TO_DB variable from _constants.
+    
     Returns connection and cursor
-
     """
     connection = sqlite3.connect(PATH_TO_DB)
     return connection, connection.cursor()
@@ -16,9 +17,8 @@ def set_up_a_connection():
 
 def create_a_table():
     """
-    Creates a table with name TABLE_NAME from constants.
+    Creates a table with name TABLE_NAME from _constants.
     It uses TABLE_COLUMNS from constants.
-
     """
     connection, cursor = set_up_a_connection()
 
