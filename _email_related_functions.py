@@ -5,6 +5,10 @@ from time import sleep
 
 
 def send_email(recipient_email, subject, email_body):
+    """
+    A simple way to send an email.
+    
+    """
     SENDER_EMAIL = "TeverusAutomation@gmail.com"
     SENDER_PASSWORD = "HailSatan666"
 
