@@ -30,18 +30,27 @@ def create_a_table():
         cursor.execute(f"create table {TABLE_NAME} ({table_columns})")
 
 
-def add_value_to_db(band, album):
+def add_values_to_db(*args):
     """
-    Adds a value to a table TABLE_NAME from constants
-
+    Adds a value to a table TABLE_NAME from _constants.
+    Accepts any number of values.
     """
     connection, cursor = set_up_a_connection()
-    with connection:
-        cursor.execute(f"""insert into {TABLE_NAME} values("{band}", "{album}")""")
 
+    with connection:
+        values = ''
+        for index, value in enumerate(args):
+            if index + 1 != len(args):
+                values += f'"{value}"'
+            else: 
+                values += f'"{value}", '
+            
+        cursor.execute(f"insert into {TABLE_NAME} values({values})")
+        
 
 def get_value(target_column, column, column_value):
     _, cursor = set_up_a_connection()
+    
     try:
         albums = cursor.execute(f"select {target_column} from {TABLE_NAME} where {column} = '{column_value}'").fetchall()
         return [item[0] for item in albums]
