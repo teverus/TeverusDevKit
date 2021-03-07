@@ -6,19 +6,23 @@ from time import sleep
 
 def send_email(recipient_email, subject, email_body):
     """
-    A simple way to send an email.
-    
+    A simple way to send an email. 
+    email_body can take HTML tags.
     """
+    # Constants
     SENDER_EMAIL = "TeverusAutomation@gmail.com"
     SENDER_PASSWORD = "HailSatan666"
 
+    # To, From, Subject info
     message = MIMEMultipart()
     message['To'] = recipient_email
     message['From'] = SENDER_EMAIL
     message['Subject'] = subject
 
+    # Attaching email.body
     message.attach(MIMEText(email_body, "html"))
 
+    # Sending an email
     session = smtplib.SMTP('smtp.gmail.com', 587)
     session.starttls()
     session.login(SENDER_EMAIL, SENDER_PASSWORD)
