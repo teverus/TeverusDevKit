@@ -7,7 +7,7 @@ class DataType:
     TEXT = "text"
     INT = "int"
        
-DATABASE_NAME = "PleaseChooseANameForYourDatabase"
+DATABASE_NAME = "Please_сhoose_a_name_for_your_database"
 PATH_TO_DB = f"{os.path.join(os.getcwd(), DATABASE_NAME)}.db"
 TABLE_NAME = DATABASE_NAME
 TABLE_COLUMNS = {
