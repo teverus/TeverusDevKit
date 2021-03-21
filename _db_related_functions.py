@@ -54,6 +54,14 @@ def add_values_to_db(*args, table_name=TABLE_NAME):
         cursor.execute(f"insert into {table_name} values({values})")
 
 
+def update_one_value(new_value, column1, column2, column2_value, table_name=TABLE_NAME):
+    connection, cursor = set_up_a_connection()
+
+    with connection:
+        new_value.replace('"', "'")
+        cursor.execute(f'''UPDATE {table_name} SET {column1} = "{new_value}" WHERE {column2} = "{column2_value}"''')
+
+
 def get_value(target_column, column, column_value, table_name=TABLE_NAME):
     """
     You must create a constant TABLE_NAME in constants.py as a fallback
