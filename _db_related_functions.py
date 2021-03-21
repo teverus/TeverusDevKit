@@ -8,8 +8,8 @@ def set_up_a_connection(database=DATABASE_NAME):
     """
     Sets up a connection to a database.
     If the latter doesn't exist - it creates it.
-    You must create a constant DATABSE_NAME in constants.py as a fallback
-    
+    If you don't want to specify database every time, create a constant DATABASE_NAME in constants.py.
+
     Returns connection and cursor
     """
     connection = sqlite3.connect(f"{os.path.join(os.getcwd(), database)}.db")
@@ -38,7 +38,7 @@ def create_a_table(database=None, table_name=None, columns=None):
 def add_values_to_db(*args, table_name=TABLE_NAME):
     """
     Accepts any number of values.
-    You must create a constant TABLE_NAME in constants.py as a fallback
+    If you don't want to specify table_name every time, create a constant TABLE_NAME in constants.py.
     """
     connection, cursor = set_up_a_connection()
 
@@ -55,6 +55,10 @@ def add_values_to_db(*args, table_name=TABLE_NAME):
 
 
 def update_one_value(new_value, column1, column2, column2_value, table_name=TABLE_NAME):
+    """
+    Updates a single value in the database.
+    If you don't want to specify table_name every time, create a constant TABLE_NAME in constants.py.
+    """
     connection, cursor = set_up_a_connection()
 
     with connection:
