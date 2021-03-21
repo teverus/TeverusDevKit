@@ -44,7 +44,7 @@ def add_values_to_db(*args, table_name=TABLE_NAME):
 
     with connection:
         values = ''
-        for index, value in enumerate(args):
+        for index, value in enumerate(*args):
             value.replace('"', "'")
             if index + 1 != len(args):
                 values += f'"{value}"'
