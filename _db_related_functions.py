@@ -35,18 +35,21 @@ def create_a_table(database=None, table_name=None, columns=None):
         cursor.execute(f"create table {table_name} ({table_columns})")
 
 
-def add_values_to_db(args, table_name=TABLE_NAME):
+def add_values_to_db(values_to_add, table_name=TABLE_NAME):
     """
     Accepts any number of values.
     If you don't want to specify table_name every time, create a constant TABLE_NAME in constants.py.
+
+    :type values_to_add: list
+    :type table_name: str
     """
     connection, cursor = set_up_a_connection()
 
     with connection:
         values = ''
-        for index, value in enumerate(args):
+        for index, value in enumerate(values_to_add):
             value.replace('"', "'")
-            if index + 1 == len(args):
+            if index + 1 == len(values_to_add):
                 values += f'"{value}"'
             else:
                 values += f'"{value}", '
